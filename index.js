@@ -2,6 +2,7 @@
  * Features
  * - Load 10 days worth of data and every second, add a new data point.
  * - Zoom on down sample data, not the original data.
+ * - Panning with shift key
  * - 1 chart 1 serie.
  */
 
@@ -17,6 +18,8 @@ $(function () {
         window.chart = Highcharts.chart(id, {
             chart: {
                 zoomType: 'x',
+                panning: true,
+                panKey: 'shift',
                 events: {
                     load: api.streamData
                 }
