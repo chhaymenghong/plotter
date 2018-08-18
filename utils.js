@@ -127,10 +127,11 @@ function streamData(e) {
 
         var x = latestPoint.x + 1000 * 3600;
         var y = previousY + (Math.random() * 10000) - 5000;
-        console.log(y);
+        console.log(serie.data.length);
+      
 
-        serie.addPoint([x, y], true, false, true);
-    }, 100);
+        serie.addPoint([x, y], true, true, true);
+    }, 1000);
 }
 
 function zoomHandler(e) {

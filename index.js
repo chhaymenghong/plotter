@@ -23,7 +23,8 @@ $(function () {
             },
             plotOptions: {
                 series: {
-                    color: 'green'
+                    color: 'green',
+                    // boostThreshold: 100000000000 // use this to overwrite when boost should kick in
                 }
             },
             time: {
@@ -47,7 +48,7 @@ $(function () {
                 name: 'Time series'
             }],
             boost: {
-                enabled: true,
+                enabled: true, // only kicks in at 5000 data points
                 debug: {
                     showSkipSummary: true
                 }
