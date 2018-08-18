@@ -128,8 +128,6 @@ function streamData(e) {
         var x = latestPoint.x + 1000 * 3600;
         var y = previousY + (Math.random() * 10000) - 5000;
         console.log(serie.data.length);
-      
-
         serie.addPoint([x, y], true, true, true);
     }, 1000);
 }
@@ -138,9 +136,7 @@ function zoomHandler(e) {
     var min = Math.floor(e.xAxis[0].min);
     var max = Math.ceil(e.xAxis[0].max);
     var originalData = e.target.series[0].data;
-    console.log('original: ' + originalData.length);
     var newData = filterDataAfterZoom(min, max, originalData);
-    console.log('new data: ' + newData.length);
     e.preventDefault();
     e.target.series[0].setData(newData, true);
 }
