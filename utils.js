@@ -1,6 +1,7 @@
 function createData(startTime, days, intervalCb, downSample) {
     var rawData = intervalCb(startTime, days);
     var sampledData = largestTriangleThreeBuckets(rawData, downSample || 0);
+    console.log(sampledData);
     return {
         rawData: rawData,
         sampledData: sampledData,
@@ -122,13 +123,13 @@ function streamData(e) {
     var serie = e.target.series[0];
     var previousY;
     setInterval(function () {
-        var latestPoint = serie.data[serie.data.length - 1];
-        previousY = latestPoint.y;
-
-        var x = latestPoint.x + 1000 * 3600;
+        var data = serie.options.data
+        console.log()
+        var latestPoint = data[data.length - 1];
+        previousY = latestPoint[1];
+        var x = latestPoint[0] + 1000;
         var y = previousY + (Math.random() * 10000) - 5000;
-        console.log(serie.data.length);
-        serie.addPoint([x, y], true, true, true);
+        serie.addPoint([x, y], true, false, true);
     }, 1000);
 }
 
