@@ -121,7 +121,8 @@ $(function () {
          * built-in events with handlers defined on the parent element.
          */
         $('#' + id).bind('mousemove touchmove touchstart', function (e) {
-            Highcharts.charts.forEach(chart => {
+            Highcharts.charts.filter(chart =>  chart.renderTo.getAttribute('class') === 'syncChart')
+                .forEach(chart => {
                 // Find coordinates within the chart
                 let event = chart.pointer.normalize(e.originalEvent);
                 // Get the hovered point
@@ -135,7 +136,7 @@ $(function () {
 
         let start = window.performance.now();
         data.forEach((d, i) => {
-            $('<div class="chart">')
+            $('<div class="syncChart">')
                 .appendTo('#' + id)
                 .highcharts({
                     chart: {
@@ -213,23 +214,24 @@ $(function () {
      */
     function syncExtremes(e) {
         let thisChart = this.chart;
-
         // Prevent feedback loop
         if (e.trigger !== 'syncExtremes') {
-            Highcharts.each(Highcharts.charts, function (chart) {
-                // only reset its counterpart, not itself since we are already zooming on itself
-                if (chart !== thisChart) {
-                    if (chart.xAxis[0].setExtremes) { // It is null while updating
-                        chart.xAxis[0].setExtremes(
-                            e.min,
-                            e.max,
-                            true,
-                            true,
-                            { trigger: 'syncExtremes' }
-                        );
+            // only care about the charts with "syncChart" as class
+            Highcharts.charts.filter(chart =>  chart.renderTo.getAttribute('class') === 'syncChart')
+                .forEach(chart => {
+                    // only reset its counterpart, not itself since we are already zooming on itself
+                    if (chart !== thisChart) {
+                        if (chart.xAxis[0].setExtremes) { // It is null while updating
+                            chart.xAxis[0].setExtremes(
+                                e.min,
+                                e.max,
+                                true,
+                                true,
+                                { trigger: 'syncExtremes' }
+                            );
+                        }
                     }
-                }
-            });
+                });
         }
     }
 
