@@ -4,8 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "data": "node --max-old-space-size=8192 dataConverter",
+    "stream": "node jsonReader",
+    "generate": "node ./utils/generateData",
+    "weatherDB": "json-server --watch ./data/fake/weather.json --port 3004",
+    "azimuthDB": "json-server --watch ./data/fake/azimuth.json --port 3005",
+    "start": "serve"
   },
   "author": "menghong chhay <chhaymenghong@yahoo.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "JSONStream": "1.3.4",
+    "node-tsv-json": "0.2.1",
+    "serve": "9.6.0"
+  }
 }
