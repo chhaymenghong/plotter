@@ -1,6 +1,6 @@
 function createData(startTime, days, intervalCb, downSample) {
-    var rawData = intervalCb(startTime, days);
-    var sampledData = largestTriangleThreeBuckets(rawData, downSample || 0);
+    let rawData = intervalCb(startTime, days);
+    let sampledData = largestTriangleThreeBuckets(rawData, downSample || 0);
     return {
         rawData: rawData,
         sampledData: sampledData,
@@ -10,21 +10,21 @@ function createData(startTime, days, intervalCb, downSample) {
 
 
 function largestTriangleThreeBuckets(data, threshold) {
-    var floor = Math.floor,
+    let floor = Math.floor,
         abs = Math.abs;
 
-    var data_length = data.length;
+    let data_length = data.length;
     if (threshold >= data_length || threshold === 0) {
         return data; // Nothing to do
     }
 
-    var sampled = [],
+    let sampled = [],
         sampled_index = 0;
 
     // Bucket size. Leave room for start and end data points
-    var every = (data_length - 2) / (threshold - 2);
+    let every = (data_length - 2) / (threshold - 2);
 
-    var a = 0,  // Initially a is the first point in the triangle
+    let a = 0,  // Initially a is the first point in the triangle
         max_area_point,
         max_area,
         area,
@@ -32,16 +32,16 @@ function largestTriangleThreeBuckets(data, threshold) {
 
     sampled[sampled_index++] = data[a]; // Always add the first point
 
-    for (var i = 0; i < threshold - 2; i++) {
+    for (let i = 0; i < threshold - 2; i++) {
 
         // Calculate point average for next bucket (containing c)
-        var avg_x = 0,
+        let avg_x = 0,
             avg_y = 0,
             avg_range_start = floor(( i + 1 ) * every) + 1,
             avg_range_end = floor(( i + 2 ) * every) + 1;
         avg_range_end = avg_range_end < data_length ? avg_range_end : data_length;
 
-        var avg_range_length = avg_range_end - avg_range_start;
+        let avg_range_length = avg_range_end - avg_range_start;
 
         for (; avg_range_start < avg_range_end; avg_range_start++) {
             avg_x += data[avg_range_start][0] * 1; // * 1 enforces Number (value may be Date)
@@ -51,11 +51,11 @@ function largestTriangleThreeBuckets(data, threshold) {
         avg_y /= avg_range_length;
 
         // Get the range for this bucket
-        var range_offs = floor((i + 0) * every) + 1,
+        let range_offs = floor((i + 0) * every) + 1,
             range_to = floor((i + 1) * every) + 1;
 
         // Point a
-        var point_a_x = data[a][0] * 1, // Enforce Number (value may be Date)
+        let point_a_x = data[a][0] * 1, // Enforce Number (value may be Date)
             point_a_y = data[a][1] * 1;
 
         max_area = area = -1;
@@ -82,12 +82,12 @@ function largestTriangleThreeBuckets(data, threshold) {
 }
 
 function oneSecondInterval(startTime, days) {
-    var result = [];
-    var previousY = 0;
-    var totalIncrement = days * 24 * 3600; // increment 1 second at a time
-    for (var i = 0; i < totalIncrement; i++) {
-        var x = startTime + i * 1000;
-        var y = previousY + (Math.random() * 100) - 50;
+    let result = [];
+    let previousY = 0;
+    let totalIncrement = days * 24 * 3600; // increment 1 second at a time
+    for (let i = 0; i < totalIncrement; i++) {
+        let x = startTime + i * 1000;
+        let y = previousY + (Math.random() * 100) - 50;
         result.push([x, y]);
         previousY = y;
     }
@@ -95,12 +95,12 @@ function oneSecondInterval(startTime, days) {
 }
 
 function oneHourInterval(startTime, days) {
-    var result = [];
-    var totalIncrement = days * 24;
-    var hourInMilli = 3600000;
-    for (var i = 0; i < totalIncrement; i++) {
-        var x = startTime + i * hourInMilli;
-        var y = (Math.random() * 100) - 50;
+    let result = [];
+    let totalIncrement = days * 24;
+    let hourInMilli = 3600000;
+    for (let i = 0; i < totalIncrement; i++) {
+        let x = startTime + i * hourInMilli;
+        let y = (Math.random() * 100) - 50;
         result.push([x, y]);
     }
     return result;
@@ -119,24 +119,23 @@ function setupReset(data, chart) {
 }
 
 function streamData(e) {
-    var serie = e.target.series[0];
-    var previousY;
+    let serie = e.target.series[0];
+    let previousY;
     setInterval(function () {
-        var latestPoint = serie.data[serie.data.length - 1];
+        let latestPoint = serie.data[serie.data.length - 1];
         previousY = latestPoint.y;
 
-        var x = latestPoint.x + 1000 * 3600;
-        var y = previousY + (Math.random() * 10000) - 5000;
-        console.log(serie.data.length);
+        let x = latestPoint.x + 1000 * 3600;
+        let y = previousY + (Math.random() * 10000) - 5000;
         serie.addPoint([x, y], true, true, true);
     }, 1000);
 }
 
 function zoomHandler(e) {
-    var min = Math.floor(e.xAxis[0].min);
-    var max = Math.ceil(e.xAxis[0].max);
-    var originalData = e.target.series[0].data;
-    var newData = filterDataAfterZoom(min, max, originalData);
+    let min = Math.floor(e.xAxis[0].min);
+    let max = Math.ceil(e.xAxis[0].max);
+    let originalData = e.target.series[0].data;
+    let newData = filterDataAfterZoom(min, max, originalData);
     e.preventDefault();
     e.target.series[0].setData(newData, true);
 }

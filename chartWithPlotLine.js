@@ -1,12 +1,18 @@
+/**
+ * With plot line
+ * **/
 $(function () {
     $.get('http://localhost:3004/data', function(result) {
+
+        const limit = 50;
+
+        /** Wind data **/
         let windSpeedData = result.map(r => {
            return [r.time, r.windSpeed, r.windCode]
         });
         let windCodeData = result.map(r => {
             return [r.time, r.windCode]
         });
-
         let windCodeEmergency = windCodeData.filter((r) => r[1] >= 3).map((r) => {
             let windCode = r[1]; let time = r[0];
             return {
@@ -21,13 +27,18 @@ $(function () {
             }
         });
 
+        /** Temperature data **/
+        const temperatureData = result.map(r => {
+           return [r.time, r.temperature, r.temperatureCode];
+        });
+
+
         let data = {
-            // windSpeedData: windSpeedData.slice(0, 50),
-            // windCodeData: windCodeData.slice(0, 50),
-            // windCodeEmergency: windCodeEmergency.slice(0, 50)
-            windSpeedData: windSpeedData,
-            windCodeData: windCodeData,
-            windCodeEmergency: windCodeEmergency
+            windSpeedData: windSpeedData.slice(0, limit),
+            windCodeData: windCodeData.slice(0, limit),
+            windCodeEmergency: windCodeEmergency.slice(0, limit),
+
+            temperatureData: temperatureData.slice(0, limit)
         };
         createGraph('container1', data)
     });
@@ -42,7 +53,7 @@ $(function () {
             },
             plotOptions: {
                 series: {
-                    color: '#ffd264',
+                    color: '#081317',
                 }
             },
             navigator: {
