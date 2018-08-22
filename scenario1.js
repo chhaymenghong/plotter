@@ -1,35 +1,22 @@
-/**
- * With plot line
- * **/
 $(function () {
-    $('#redraw').on('click', redraw);
-    let weatherPromise = $.get('http://localhost:3004/data');
-    let eventsPromise = $.get('http://localhost:3006/data');
-    let windSpeedData;
-    let windCodeAnnotation;
-    let events;
-    let chart;
-    let sampledData;
-    let width = $('#container1').width();
-    let pixelPerPoints = 5; // this along with width control the visual quality of the chart
-    Promise.all([weatherPromise, eventsPromise]).then(function (data) {
-        let weatherData = data[0];
-        let eventsData = data[1];
-        console.log("original: " + weatherData.length);
-        formatData(weatherData, eventsData);
-        sampledData = sampleIfNeed(windSpeedData);
-        console.log("sampled: " + sampledData.length);
-        draw('container1', sampledData);
+    let CHART;
+    let OPTIONS = {
+        width: $('#container1').width(),
+        pixelPerPoints: 5
+    };
+    let data;
+    queryData().then(response => {
+        data = formatAndSample(response.weatherData, response.eventsData);
+        setupEventHandlers();
+        drawChart(data.sampledWindSpeedData);
     });
 
-    function formatData(weatherData, eventsData) {
-        /** event data **/
-
-        /** Wind data **/
-        windSpeedData = weatherData.map(r => {
+    function formatAndSample(weatherData, eventsData) {
+        let windSpeedData = weatherData.map(r => {
             return [r.time, r.windSpeed, r.windCode]
         });
-        windCodeAnnotation = windSpeedData
+
+        let windSpeedStatusData = windSpeedData
             .filter((r) => {
                 let windCode = r[2];
                 return windCode >= 3;
@@ -45,21 +32,29 @@ $(function () {
                     windSpeed: windSpeed
                 };
             });
-        events = eventsData;
+
+        let sampledWindSpeedData = sampleIfNeed(windSpeedData);
+
+        return {
+            windSpeedData: windSpeedData,
+            windSpeedStatusData: windSpeedStatusData,
+            eventsData: eventsData,
+            sampledWindSpeedData: sampledWindSpeedData
+        };
     }
 
-    function draw(id, data) {
+    function drawChart(data) {
         let start = window.performance.now();
-        chart = Highcharts.chart(id, {
+        CHART = Highcharts.chart('container1', {
             chart: {
                 zoomType: 'x',
                 panning: true,
                 panKey: 'shift',
                 events: {
-                    selection: selectionHandlers,
+                    selection: selectionHandler,
                     load: function(e) {
-                        addStatus(e);
-                        addEvents(e);
+                        addWindSpeedStatusData(e);
+                        addEventsData(e);
                     }
                 }
             },
@@ -68,7 +63,7 @@ $(function () {
             },
             plotOptions: {
                 series: {
-                    color: '#081317',
+                    color: 'pink',
                 }
             },
             time: {
@@ -96,7 +91,7 @@ $(function () {
             },
             series: [
                 {
-                    data: data.slice(0, data.length),
+                    data: data,
                     lineWidth: 0.5,
                     name: 'Time series'
                 }
@@ -105,121 +100,50 @@ $(function () {
                 enabled: false
             }
         });
-        let end = window.performance.now();
-        let time = end - start;
-        $('#time1').text('Rendered in: ' + Math.trunc(time) + ' ms');
+        $('#time1').text('Rendered in: ' + Math.trunc(window.performance.now() - start) + ' ms');
     }
 
-    /** Add annotation when the tick level is 30 second interval **/
-    function addStatus(e) {
-        console.log(e);
-        let tickIntervalInSecond = (e.target.xAxis[0].tickInterval)/ 1000;
-        console.log(tickIntervalInSecond);
-        // show plotline at 1/2 mn tick interval
-        if ( tickIntervalInSecond <= 30 ) {
-            let data = windCodeAnnotation.filter(d => {
-                return d.time >= e.target.xAxis[0].min && d.time <= e.target.xAxis[0].max;
-            });
-            console.log(data.length);
-            data.forEach(w => {
-                e.target.addAnnotation({
-                    labelOptions: {
-                        backgroundColor: w.color,
-                        verticalAlign: 'top',
-                        y: 15
-                    },
-                    id: w.time,
-                    labels: [{
-                        point: {
-                            xAxis: 0,
-                            yAxis: 0,
-                            x: w.time,
-                            y: w.windSpeed
-                        },
-                        text: w.text
-                    }]
-                });
-            });
-
-
-
-
-
+    /** Only add wind speed status whens at at least 30 seconds per tick **/
+    function addWindSpeedStatusData(e) {
+        const chart = e.target;
+        const xAxis = chart.xAxis[0];
+        let tISecond = xAxis.tickInterval / 1000;
+        if ( tISecond <= 30 ) {
+            let points = data.windSpeedStatusData.filter(d => d.time >= xAxis.min && d.time <= xAxis.max);
+            addAnnotations(chart, points);
         }
     }
 
-    function addEvents(e) {
-        let tickIntervalInMilli = (e.target.xAxis[0].tickInterval);
-        let min = e.target.xAxis[0].min;
-        let max = e.target.xAxis[0].max;
-        let data = events.filter(d => {
-            let inRange = d.start >= min && d.end <= max;
-            // console.log(d.duration/60);
-            let fiftyPercentOfTick = (d.duration / tickIntervalInMilli) >= .1;
-            return inRange && fiftyPercentOfTick;
-        });
-        if (data.length > 0) {
-            console.log(data[0].labelStart);
-        }
-        // data.map(w => {
-        //     return [[w.start, 250], [w.end, 250]]
-        // }).forEach(w => {
-        //     e.target.addSeries({
-        //         data: [w[0], w[1]],
-        //         color: 'aliceblue'
-        //     }, true, false);
-        // });
-
-        data.map(w => {
-            return {
-                color: '#93bcff',
-                from: w.start,
-                to: w.end,
-                // label: {
-                //     text: w.labelStart
-                // }
-            }
-        }).forEach(w => {
-            e.target.xAxis[0].addPlotBand(w);
-        });
-        console.log(data.length);
-        // console.log(e);
-        // console.log('tick: ' + tickIntervalInSecond);
+    function addEventsData(e) {
+        const xAxis = e.target.xAxis[0];
+        let tickIntervalInMilli = xAxis.tickInterval;
+        let points = data.eventsData
+            .filter(d => d.start >= xAxis.min && d.start <= xAxis.max && d.end <= xAxis.max && (d.duration / tickIntervalInMilli) >= .1);
+        addPlotBands(e.target, points);
     }
 
-    function selectionHandlers(e) {
-        console.log(e);
-        // let currentData = e.target.chart.series[0].options.data;
-        let min = e.xAxis[0].min;
-        let max = e.xAxis[0].max;
-        // get data within this range
-        let data = getDataWithinRange(min, max, windSpeedData); // range on the initial data set coz it has everything in it
-        chart.destroy(); // destroy and recreate the graph
-        draw('container1', data);
+    function selectionHandler(e) {
+        let xAxis = e.xAxis[0];
+        let sampledData = sampleIfNeed(filterDataForTimeRange(xAxis.min, xAxis.max, data.windSpeedData));
+        destroyChart();
+        drawChart(sampledData);
         e.preventDefault();
-
     }
 
-    function getDataWithinRange(minTime, maxTime, dataPoints) {
-        let dataWithinRange = dataPoints.filter(p => {
+    function filterDataForTimeRange(minTime, maxTime, dataPoints) {
+        return dataPoints.filter(p => {
            return p[0] >= minTime && p[0] <= maxTime;
         });
-        return sampleIfNeed(dataWithinRange);
     }
-    // [time, windSpeed]
+
     function sampleIfNeed(dataPoints) {
         let dataPointsLen = dataPoints.length;
-        let numAllowedPoints = width / pixelPerPoints;
-        let isSamplingNeeded = isTooBig(dataPointsLen, numAllowedPoints);
+        let numAllowedPoints = OPTIONS.width / OPTIONS.pixelPerPoints;
+        let isSamplingNeeded = isTooManyPoints(dataPointsLen, numAllowedPoints);
         if (isSamplingNeeded) {
             return averageSample(dataPoints, dataPointsLen, numAllowedPoints);
         }
-        console.log('no need to sample');
         return dataPoints;
-    }
-
-    function isTooBig(dataPoints, numAllowedPoints) {
-        return dataPoints > numAllowedPoints;
     }
 
     function averageSample(dataPoints, dataPointsLen, numAllowedPoints) {
@@ -236,6 +160,10 @@ $(function () {
             samplePoints.push( [dataPoints[start][0], avg] );
         }
         return samplePoints;
+    }
+
+    function isTooManyPoints(dataPoints, numAllowedPoints) {
+        return dataPoints > numAllowedPoints;
     }
 
     function average(list) {
@@ -264,10 +192,62 @@ $(function () {
         }
     }
 
-    function redraw() {
+    function setupEventHandlers() {
+        $('#redraw').on('click', function redraw() {
+            destroyChart();
+            drawChart(data.sampledData);
+        });
+    }
+
+    function queryData() {
+        let weatherPromise = $.get('http://localhost:3004/data');
+        let eventsPromise = $.get('http://localhost:3006/data');
+        return Promise.all([weatherPromise, eventsPromise]).then(response => {
+            let weatherData = response[0];
+            let eventsData = response[1];
+            return {
+                weatherData: weatherData,
+                eventsData: eventsData
+            };
+        });
+    }
+
+    function destroyChart() {
         // bug in annotation modules
         Highcharts.defaultOptions.annotations = [];
-        chart.destroy();
-        draw('container1', sampledData);
+        CHART.destroy();
+    }
+
+    function addAnnotations(chart, data) {
+        data.forEach(d => {
+            chart.addAnnotation({
+                labelOptions: {
+                    backgroundColor: d.color,
+                    verticalAlign: 'top',
+                    y: 15
+                },
+                id: d.time,
+                labels: [{
+                    point: {
+                        xAxis: 0,
+                        yAxis: 0,
+                        x: d.time,
+                        y: d.windSpeed
+                    },
+                    text: d.text
+                }]
+            });
+        });
+    }
+
+    function addPlotBands(chart, data) {
+        const xAxis = chart.xAxis[0];
+        data.map(d => {
+            return {
+                color: '#93bcff',
+                from: d.start,
+                to: d.end
+            }
+        }).forEach(d => xAxis.addPlotBand(d));
     }
 });

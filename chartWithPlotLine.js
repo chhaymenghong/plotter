@@ -144,7 +144,10 @@ $(function () {
                         spacingTop: 20,
                         spacingBottom: 20,
                         panning: true,
-                        panKey: 'shift'
+                        panKey: 'shift',
+                        events: {
+                            load: (e) => console.log(e)
+                        }
                     },
                     time: {
                         useUTC: false
@@ -215,6 +218,7 @@ $(function () {
      */
     function syncExtremes(e) {
         let thisChart = this.chart;
+        console.log(thisChart);
         // Prevent feedback loop
         if (e.trigger !== 'syncExtremes') {
             // only care about the charts with "syncChart" as class
