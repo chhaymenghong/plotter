@@ -265,10 +265,10 @@ $(function () {
     }
 
     function redraw() {
-        chart.annotations.forEach(e => {
-            chart.removeAnnotation(e.options.id);
-        });
+        // bug in annotation modules
+        Highcharts.defaultOptions.annotations = [];
         chart.destroy();
+        console.log(windCodeAnnotation);
         draw('container1', sampledData);
     }
 });

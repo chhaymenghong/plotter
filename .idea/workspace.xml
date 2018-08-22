@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="96536265-33df-4db6-8cd7-6c488d8defaf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenario1.html" afterPath="$PROJECT_DIR$/scenario1.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenario1.js" afterPath="$PROJECT_DIR$/scenario1.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -67,8 +66,8 @@
       <file leaf-file-name="scenario1.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scenario1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="270" column="24" lean-forward="true" selection-start-line="270" selection-start-column="24" selection-end-line="270" selection-end-column="24" />
+            <state relative-caret-position="383">
+              <caret line="268" column="51" lean-forward="true" selection-start-line="268" selection-start-column="8" selection-end-line="268" selection-end-column="51" />
               <folding>
                 <element signature="e#7006#7059#0" expanded="false" />
                 <element signature="e#7632#7708#0" expanded="false" />
@@ -146,9 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>createda</find>
-      <find>time</find>
-      <find>nav</find>
       <find>abol</find>
       <find>console</find>
       <find>syncex</find>
@@ -171,11 +167,14 @@
       <find>addPlotLine</find>
       <find>addStatus</find>
       <find>adds</find>
-      <find>windCodeAnnotation</find>
       <find>destroy</find>
       <find>addplo</find>
       <find>windCodeEmergency</find>
       <find>annotation</find>
+      <find>windspe</find>
+      <find>windCodeAnnotation</find>
+      <find>chart = null</find>
+      <find>null</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -322,12 +321,12 @@
       <option name="presentableId" value="Default" />
       <updated>1534528611645</updated>
       <workItem from="1534528612951" duration="36401000" />
-      <workItem from="1534905175061" duration="15836000" />
+      <workItem from="1534905175061" duration="16684000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52237000" />
+    <option name="totallyTimeSpent" value="53085000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -614,8 +613,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scenario1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="270" column="24" lean-forward="true" selection-start-line="270" selection-start-column="24" selection-end-line="270" selection-end-column="24" />
+        <state relative-caret-position="383">
+          <caret line="268" column="51" lean-forward="true" selection-start-line="268" selection-start-column="8" selection-end-line="268" selection-end-column="51" />
           <folding>
             <element signature="e#7006#7059#0" expanded="false" />
             <element signature="e#7632#7708#0" expanded="false" />
