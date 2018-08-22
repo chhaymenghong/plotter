@@ -6,13 +6,12 @@ $(function () {
     let weatherPromise = $.get('http://localhost:3004/data');
     let eventsPromise = $.get('http://localhost:3006/data');
     let windSpeedData;
-    let windCodeData;
     let windCodeAnnotation;
     let events;
     let chart;
     let sampledData;
     let width = $('#container1').width();
-    let pixelPerPoints = 10; // this along with width control the visual quality of the chart
+    let pixelPerPoints = 5; // this along with width control the visual quality of the chart
     Promise.all([weatherPromise, eventsPromise]).then(function (data) {
         let weatherData = data[0];
         let eventsData = data[1];
@@ -28,25 +27,24 @@ $(function () {
 
         /** Wind data **/
         windSpeedData = weatherData.map(r => {
-            return [r.time, r.windSpeed]
+            return [r.time, r.windSpeed, r.windCode]
         });
-        windCodeData = weatherData.map(r => {
-            return [r.time, r.windCode]
-        });
-        windCodeAnnotation = windCodeData.filter((r) => r[1] >= 3).map((r) => {
-            let windCode = r[1];
-            let time = r[0];
-            return {
-                color: getColor(windCode),
-                value: time,
-                label: {
+        windCodeAnnotation = windSpeedData
+            .filter((r) => {
+                let windCode = r[2];
+                return windCode >= 3;
+            })
+            .map((r) => {
+                let time = r[0];
+                let windSpeed = r[1];
+                let windCode = r[2];
+                return {
+                    color: getColor(windCode),
                     text: getLabel(windCode),
-                    verticalAlign: 'middle',
-                    textAlign: 'center'
-                },
-                width: 5
-            }
-        });
+                    time: time,
+                    windSpeed: windSpeed
+                };
+            });
         events = eventsData;
     }
 
@@ -64,6 +62,9 @@ $(function () {
                         addEvents(e);
                     }
                 }
+            },
+            legend: {
+                enabled: false
             },
             plotOptions: {
                 series: {
@@ -109,7 +110,7 @@ $(function () {
         $('#time1').text('Rendered in: ' + Math.trunc(time) + ' ms');
     }
 
-    /** Add plotline when the tick level is 30 second interval **/
+    /** Add annotation when the tick level is 30 second interval **/
     function addStatus(e) {
         console.log(e);
         let tickIntervalInSecond = (e.target.xAxis[0].tickInterval)/ 1000;
@@ -117,12 +118,32 @@ $(function () {
         // show plotline at 1/2 mn tick interval
         if ( tickIntervalInSecond <= 30 ) {
             let data = windCodeAnnotation.filter(d => {
-                return d.value >= e.target.xAxis[0].min && d.value <= e.target.xAxis[0].max;
+                return d.time >= e.target.xAxis[0].min && d.time <= e.target.xAxis[0].max;
             });
             console.log(data.length);
             data.forEach(w => {
-                e.target.xAxis[0].addPlotLine(w);
+                e.target.addAnnotation({
+                    labelOptions: {
+                        backgroundColor: w.color,
+                        verticalAlign: 'top',
+                        y: 15
+                    },
+                    labels: [{
+                        point: {
+                            xAxis: 0,
+                            yAxis: 0,
+                            x: w.time,
+                            y: w.windSpeed
+                        },
+                        text: w.text
+                    }]
+                });
             });
+
+
+
+
+
         }
     }
 
@@ -139,6 +160,15 @@ $(function () {
         if (data.length > 0) {
             console.log(data[0].labelStart);
         }
+        // data.map(w => {
+        //     return [[w.start, 250], [w.end, 250]]
+        // }).forEach(w => {
+        //     e.target.addSeries({
+        //         data: [w[0], w[1]],
+        //         color: 'aliceblue'
+        //     }, true, false);
+        // });
+
         data.map(w => {
             return {
                 color: '#93bcff',
@@ -234,6 +264,9 @@ $(function () {
     }
 
     function redraw() {
+        chart.annotations.forEach(e => {
+            e.destroy(); // destroy and recreate the graph
+        });
         chart.destroy();
         draw('container1', sampledData);
     }
