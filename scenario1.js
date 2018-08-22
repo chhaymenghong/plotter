@@ -268,7 +268,6 @@ $(function () {
         // bug in annotation modules
         Highcharts.defaultOptions.annotations = [];
         chart.destroy();
-        console.log(windCodeAnnotation);
         draw('container1', sampledData);
     }
 });

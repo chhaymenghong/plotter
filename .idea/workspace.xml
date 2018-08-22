@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="96536265-33df-4db6-8cd7-6c488d8defaf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenario1.js" afterPath="$PROJECT_DIR$/scenario1.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,8 +31,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="13" column="76" lean-forward="false" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -55,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/scenario1.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="65" lean-forward="false" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+              <caret line="17" column="76" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="17" selection-end-column="76" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -63,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scenario1.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scenario1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scenario1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="268" column="51" lean-forward="true" selection-start-line="268" selection-start-column="8" selection-end-line="268" selection-end-column="51" />
+            <state relative-caret-position="2701">
+              <caret line="269" column="24" lean-forward="false" selection-start-line="269" selection-start-column="24" selection-end-line="269" selection-end-column="24" />
               <folding>
                 <element signature="e#7006#7059#0" expanded="false" />
                 <element signature="e#7632#7708#0" expanded="false" />
@@ -119,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chartWithPlotLine.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chartWithPlotLine.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chartWithPlotLine.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+            <state relative-caret-position="285">
+              <caret line="19" column="76" lean-forward="false" selection-start-line="19" selection-start-column="76" selection-end-line="19" selection-end-column="76" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -196,10 +197,8 @@
         <option value="$PROJECT_DIR$/overlay.js" />
         <option value="$PROJECT_DIR$/utils.js" />
         <option value="$PROJECT_DIR$/overlay.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/chartWithPlotLine/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/chartWithPlotLine.html" />
         <option value="$PROJECT_DIR$/chartWithPlotLine.js" />
         <option value="$PROJECT_DIR$/data/fake/azimuth.json" />
         <option value="$PROJECT_DIR$/package.json" />
@@ -207,6 +206,8 @@
         <option value="$PROJECT_DIR$/data/fake/events30day.json" />
         <option value="$PROJECT_DIR$/scenario1.html" />
         <option value="$PROJECT_DIR$/scenario1.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/chartWithPlotLine.html" />
       </list>
     </option>
   </component>
@@ -321,12 +322,12 @@
       <option name="presentableId" value="Default" />
       <updated>1534528611645</updated>
       <workItem from="1534528612951" duration="36401000" />
-      <workItem from="1534905175061" duration="16684000" />
+      <workItem from="1534905175061" duration="16828000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53085000" />
+    <option name="totallyTimeSpent" value="53229000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,27 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chartWithPlotLine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/fake/weather30Day.json">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="0">
@@ -591,16 +571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scenario1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="65" lean-forward="false" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chartWithPlotLine.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2890">
@@ -613,12 +583,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scenario1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="268" column="51" lean-forward="true" selection-start-line="268" selection-start-column="8" selection-end-line="268" selection-end-column="51" />
+        <state relative-caret-position="2701">
+          <caret line="269" column="24" lean-forward="false" selection-start-line="269" selection-start-column="24" selection-end-line="269" selection-end-column="24" />
           <folding>
             <element signature="e#7006#7059#0" expanded="false" />
             <element signature="e#7632#7708#0" expanded="false" />
             <element signature="e#7971#8178#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scenario1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="76" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="17" selection-end-column="76" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="76" lean-forward="false" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chartWithPlotLine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="76" lean-forward="false" selection-start-line="19" selection-start-column="76" selection-end-line="19" selection-end-column="76" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
