@@ -128,6 +128,7 @@ $(function () {
                         verticalAlign: 'top',
                         y: 15
                     },
+                    id: w.time,
                     labels: [{
                         point: {
                             xAxis: 0,
@@ -265,7 +266,7 @@ $(function () {
 
     function redraw() {
         chart.annotations.forEach(e => {
-            e.destroy(); // destroy and recreate the graph
+            chart.removeAnnotation(e.options.id);
         });
         chart.destroy();
         draw('container1', sampledData);
