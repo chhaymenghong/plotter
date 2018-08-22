@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "data": "node --max-old-space-size=8192 dataConverter",
     "stream": "node jsonReader",
-    "generate": "node ./utils/generateData",
-    "weatherDB": "json-server --watch ./data/fake/weather.json --port 3004",
-    "azimuthDB": "json-server --watch ./data/fake/azimuth.json --port 3005",
+    "generate": "node --max-old-space-size=8192 ./utils/generateData",
+    "weatherDB": "json-server --watch --max-old-space-size=8192 ./data/fake/weather30day.json --port 3004",
+    "azimuthDB": "json-server --watch ./data/fake/azimuth30day.json --port 3005",
+    "eventsDB": "json-server --watch ./data/fake/events30day.json --port 3006",
     "start": "serve"
   },
   "author": "menghong chhay <chhaymenghong@yahoo.com>",

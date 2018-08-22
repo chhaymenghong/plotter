@@ -44,11 +44,11 @@ $(function () {
         let data2 = [
             {
                 name: 'Wind Speed',
-                data: windSpeedData.slice(0, limit),
+                data: windSpeedData.slice(0, 500),
             },
             {
                 name: 'Temperature',
-                data: temperatureData.slice(0, limit)
+                data: temperatureData.slice(0, 500)
             }
         ];
         drawSyncGraph('container2', data2);
@@ -181,6 +181,7 @@ $(function () {
                     xAxis: {
                         crosshair: true, // to show the line
                         type: 'datetime',
+                        // gridLineWidth: 2,
                         events: {
                             setExtremes: syncExtremes
                         },
@@ -220,7 +221,7 @@ $(function () {
             Highcharts.charts.filter(chart =>  chart.renderTo.getAttribute('class') === 'syncChart')
                 .forEach(chart => {
                     // only reset its counterpart, not itself since we are already zooming on itself
-                    if (chart !== thisChart) {
+                    // if (chart !== thisChart) {
                         if (chart.xAxis[0].setExtremes) { // It is null while updating
                             chart.xAxis[0].setExtremes(
                                 e.min,
@@ -230,7 +231,7 @@ $(function () {
                                 { trigger: 'syncExtremes' }
                             );
                         }
-                    }
+                    // }
                 });
         }
     }
