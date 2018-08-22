@@ -62,22 +62,16 @@ function fakeEventsData(startMilli) {
         }
     }
     function randomDuration() {
-        let slot = Math.floor(Math.random() * 7);
+        let slot = Math.floor(Math.random() * 4);
         switch (slot) {
             case 0:
-                return 600; // 10mn
+                return 600000; // 10mn
             case 1:
-                return 1200; // 20mn
+                return 1200000; // 20mn
             case 2:
-                return 3600; // 1hr
+                return 3600000; // 1hr
             case 3:
-                return 7200; // 2hr
-            case 4:
-                return 86400; // 1day
-            case 5:
-                return 172800; // 2 days
-            case 6:
-                return 864000 // 10 days
+                return 7200000; // 2hr
         }
     }
 }

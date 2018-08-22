@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96536265-33df-4db6-8cd7-6c488d8defaf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scenario1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scenario1.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenario1.js" afterPath="$PROJECT_DIR$/scenario1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/generateData.js" afterPath="$PROJECT_DIR$/utils/generateData.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,30 +40,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2025">
-              <caret line="135" column="40" lean-forward="false" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="chartWithPlotLine.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chartWithPlotLine.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-524">
-              <caret line="172" column="44" lean-forward="false" selection-start-line="172" selection-start-column="39" selection-end-line="172" selection-end-column="44" />
+            <state relative-caret-position="173">
+              <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="29" />
               <folding>
-                <element signature="e#1680#3147#0" expanded="false" />
                 <marker date="1534900795000" expanded="true" signature="3347:3438" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scenario1.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scenario1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scenario1.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -73,28 +62,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scenario1.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scenario1.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scenario1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="134" column="41" lean-forward="false" selection-start-line="134" selection-start-column="41" selection-end-line="134" selection-end-column="41" />
+            <state relative-caret-position="210">
+              <caret line="14" column="27" lean-forward="false" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
               <folding>
-                <element signature="e#1292#2012#0" expanded="false" />
-                <element signature="e#1624#2004#0" expanded="false" />
-                <element signature="e#4300#4353#0" expanded="false" />
-                <element signature="e#4926#5002#0" expanded="false" />
-                <element signature="e#5032#5235#0" expanded="false" />
-                <element signature="e#5265#5472#0" expanded="false" />
+                <element signature="e#6174#6227#0" expanded="false" />
+                <element signature="e#6800#6876#0" expanded="false" />
+                <element signature="e#7139#7346#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="azimuth30Day.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/fake/azimuth30Day.json">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="0">
-              <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="29" />
+      <file leaf-file-name="events30day.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/fake/events30day.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3600">
+              <caret line="0" column="38486" lean-forward="false" selection-start-line="0" selection-start-column="38486" selection-end-line="0" selection-end-column="38486" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,23 +99,21 @@
       <file leaf-file-name="generateData.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/generateData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" column="51" lean-forward="false" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state relative-caret-position="-321">
+              <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
               <folding>
                 <element signature="n#!!block;n#randomLabel#0;n#!!block;n#fakeEventsData#0" expanded="false" />
-                <element signature="n#!!block;n#randomDuration#0;n#!!block;n#fakeEventsData#0" expanded="false" />
-                <element signature="e#4501#4547#0" expanded="false" />
+                <element signature="e#4333#4379#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="59" column="17" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="59" selection-end-column="17" />
-              <folding />
+      <file leaf-file-name="weather30Day.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/fake/weather30Day.json">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             </state>
           </provider>
         </entry>
@@ -126,8 +121,8 @@
       <file leaf-file-name="chartWithPlotLine.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chartWithPlotLine.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -149,13 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onesecon</find>
-      <find>c</find>
-      <find>alice</find>
-      <find>cons</find>
-      <find>plotlin</find>
-      <find>ploglin</find>
-      <find>plot</find>
       <find>windCode</find>
       <find>values</find>
       <find>conso</find>
@@ -173,12 +161,19 @@
       <find>crossh</find>
       <find>grid</find>
       <find>bin</find>
-      <find>point</find>
       <find>setData</find>
       <find>console.</find>
       <find>utc</find>
       <find>selectionHandlers</find>
       <find>selec</find>
+      <find>point</find>
+      <find>windCodeEmergency</find>
+      <find>label</find>
+      <find>duration</find>
+      <find>aliceblue</find>
+      <find>addPlotLine</find>
+      <find>addStatus</find>
+      <find>adds</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -207,9 +202,10 @@
         <option value="$PROJECT_DIR$/chartWithPlotLine.js" />
         <option value="$PROJECT_DIR$/data/fake/azimuth.json" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/utils/generateData.js" />
-        <option value="$PROJECT_DIR$/scenario1.js" />
         <option value="$PROJECT_DIR$/scenario1.html" />
+        <option value="$PROJECT_DIR$/utils/generateData.js" />
+        <option value="$PROJECT_DIR$/data/fake/events30day.json" />
+        <option value="$PROJECT_DIR$/scenario1.js" />
       </list>
     </option>
   </component>
@@ -324,12 +320,12 @@
       <option name="presentableId" value="Default" />
       <updated>1534528611645</updated>
       <workItem from="1534528612951" duration="36401000" />
-      <workItem from="1534905175061" duration="8005000" />
+      <workItem from="1534905175061" duration="12629000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44406000" />
+    <option name="totallyTimeSpent" value="49030000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -426,7 +422,6 @@
         <state relative-caret-position="780">
           <caret line="52" column="10" lean-forward="true" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
           <folding>
-            <element signature="e#1680#3147#0" expanded="false" />
             <marker date="1534900795000" expanded="true" signature="3347:3438" ph="..." />
           </folding>
         </state>
@@ -438,8 +433,7 @@
           <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
           <folding>
             <element signature="n#!!block;n#randomLabel#0;n#!!block;n#fakeEventsData#0" expanded="false" />
-            <element signature="n#!!block;n#randomDuration#0;n#!!block;n#fakeEventsData#0" expanded="false" />
-            <element signature="e#4501#4547#0" expanded="false" />
+            <element signature="e#4333#4379#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -499,14 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2025">
@@ -534,44 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/fake/events30day.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2689">
-          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chartWithPlotLine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chartWithPlotLine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-524">
-          <caret line="172" column="44" lean-forward="false" selection-start-line="172" selection-start-column="39" selection-end-line="172" selection-end-column="44" />
-          <folding>
-            <element signature="e#1680#3147#0" expanded="false" />
-            <marker date="1534900795000" expanded="true" signature="3347:3438" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/fake/azimuth30Day.json">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="0">
@@ -589,38 +537,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scenario1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="55" lean-forward="false" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chartWithPlotLine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/fake/weather30Day.json">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="58" lean-forward="false" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chartWithPlotLine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="29" />
+          <folding>
+            <marker date="1534900795000" expanded="true" signature="3347:3438" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/fake/events30day.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3600">
+          <caret line="0" column="38486" lean-forward="false" selection-start-line="0" selection-start-column="38486" selection-end-line="0" selection-end-column="38486" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils/generateData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="51" lean-forward="false" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        <state relative-caret-position="-321">
+          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
           <folding>
             <element signature="n#!!block;n#randomLabel#0;n#!!block;n#fakeEventsData#0" expanded="false" />
-            <element signature="n#!!block;n#randomDuration#0;n#!!block;n#fakeEventsData#0" expanded="false" />
-            <element signature="e#4501#4547#0" expanded="false" />
+            <element signature="e#4333#4379#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scenario1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="134" column="41" lean-forward="false" selection-start-line="134" selection-start-column="41" selection-end-line="134" selection-end-column="41" />
+        <state relative-caret-position="210">
+          <caret line="14" column="27" lean-forward="false" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
           <folding>
-            <element signature="e#1292#2012#0" expanded="false" />
-            <element signature="e#1624#2004#0" expanded="false" />
-            <element signature="e#4300#4353#0" expanded="false" />
-            <element signature="e#4926#5002#0" expanded="false" />
-            <element signature="e#5032#5235#0" expanded="false" />
-            <element signature="e#5265#5472#0" expanded="false" />
+            <element signature="e#6174#6227#0" expanded="false" />
+            <element signature="e#6800#6876#0" expanded="false" />
+            <element signature="e#7139#7346#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scenario1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="55" lean-forward="false" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>

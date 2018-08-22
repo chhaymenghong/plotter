@@ -8,35 +8,22 @@ $(function () {
     let windSpeedData;
     let windCodeData;
     let windCodeAnnotation;
-    let eventsData;
+    let events;
     let chart;
     let sampledData;
-    let width = 1000;
-    let pointPerPx = 1;
+    let width = $('#container1').width();
+    let pixelPerPoints = 10; // this along with width control the visual quality of the chart
     Promise.all([weatherPromise, eventsPromise]).then(function (data) {
         let weatherData = data[0];
         let eventsData = data[1];
         console.log("original: " + weatherData.length);
-        formatData(weatherData);
+        formatData(weatherData, eventsData);
         sampledData = sampleIfNeed(windSpeedData);
         console.log("sampled: " + sampledData.length);
         draw('container1', sampledData);
     });
 
-    function selectionHandlers(e) {
-        console.log(e);
-        // let currentData = e.target.chart.series[0].options.data;
-        let min = e.xAxis[0].min;
-        let max = e.xAxis[0].max;
-        // get data within this range
-        let data = getDataWithinRange(min, max, windSpeedData); // range on the initial data set coz it has everything in it
-        chart.destroy(); // destroy and recreate the graph
-        draw('container1', data);
-        e.preventDefault();
-
-    }
-
-    function formatData(weatherData) {
+    function formatData(weatherData, eventsData) {
         /** event data **/
 
         /** Wind data **/
@@ -60,6 +47,7 @@ $(function () {
                 width: 5
             }
         });
+        events = eventsData;
     }
 
     function draw(id, data) {
@@ -70,7 +58,11 @@ $(function () {
                 panning: true,
                 panKey: 'shift',
                 events: {
-                    selection: selectionHandlers
+                    selection: selectionHandlers,
+                    load: function(e) {
+                        addStatus(e);
+                        addEvents(e);
+                    }
                 }
             },
             plotOptions: {
@@ -92,7 +84,6 @@ $(function () {
             },
             xAxis: {
                 type: 'datetime'
-                // plotLines: data.windCodeEmergency
             },
             yAxis: {
                 labels: {
@@ -118,6 +109,66 @@ $(function () {
         $('#time1').text('Rendered in: ' + Math.trunc(time) + ' ms');
     }
 
+    /** Add plotline when the tick level is 30 second interval **/
+    function addStatus(e) {
+        console.log(e);
+        let tickIntervalInSecond = (e.target.xAxis[0].tickInterval)/ 1000;
+        console.log(tickIntervalInSecond);
+        // show plotline at 1/2 mn tick interval
+        if ( tickIntervalInSecond <= 30 ) {
+            let data = windCodeAnnotation.filter(d => {
+                return d.value >= e.target.xAxis[0].min && d.value <= e.target.xAxis[0].max;
+            });
+            console.log(data.length);
+            data.forEach(w => {
+                e.target.xAxis[0].addPlotLine(w);
+            });
+        }
+    }
+
+    function addEvents(e) {
+        let tickIntervalInMilli = (e.target.xAxis[0].tickInterval);
+        let min = e.target.xAxis[0].min;
+        let max = e.target.xAxis[0].max;
+        let data = events.filter(d => {
+            let inRange = d.start >= min && d.end <= max;
+            // console.log(d.duration/60);
+            let fiftyPercentOfTick = (d.duration / tickIntervalInMilli) >= .1;
+            return inRange && fiftyPercentOfTick;
+        });
+        if (data.length > 0) {
+            console.log(data[0].labelStart);
+        }
+        data.map(w => {
+            return {
+                color: '#93bcff',
+                from: w.start,
+                to: w.end,
+                // label: {
+                //     text: w.labelStart
+                // }
+            }
+        }).forEach(w => {
+            e.target.xAxis[0].addPlotBand(w);
+        });
+        console.log(data.length);
+        // console.log(e);
+        // console.log('tick: ' + tickIntervalInSecond);
+    }
+
+    function selectionHandlers(e) {
+        console.log(e);
+        // let currentData = e.target.chart.series[0].options.data;
+        let min = e.xAxis[0].min;
+        let max = e.xAxis[0].max;
+        // get data within this range
+        let data = getDataWithinRange(min, max, windSpeedData); // range on the initial data set coz it has everything in it
+        chart.destroy(); // destroy and recreate the graph
+        draw('container1', data);
+        e.preventDefault();
+
+    }
+
     function getDataWithinRange(minTime, maxTime, dataPoints) {
         let dataWithinRange = dataPoints.filter(p => {
            return p[0] >= minTime && p[0] <= maxTime;
@@ -127,7 +178,7 @@ $(function () {
     // [time, windSpeed]
     function sampleIfNeed(dataPoints) {
         let dataPointsLen = dataPoints.length;
-        let numAllowedPoints = width / pointPerPx;
+        let numAllowedPoints = width / pixelPerPoints;
         let isSamplingNeeded = isTooBig(dataPointsLen, numAllowedPoints);
         if (isSamplingNeeded) {
             return averageSample(dataPoints, dataPointsLen, numAllowedPoints);
