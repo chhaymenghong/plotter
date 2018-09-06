@@ -195,7 +195,7 @@ $(function () {
     function setupEventHandlers() {
         $('#redraw').on('click', function redraw() {
             destroyChart();
-            drawChart(data.sampledData);
+            drawChart(data.sampledWindSpeedData);
         });
     }
 
